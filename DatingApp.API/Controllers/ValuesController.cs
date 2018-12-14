@@ -22,6 +22,7 @@ namespace DatingApp.API.Controllers
         }
         // GET api/values
         // GET http://localhost:5000/api/values (5000 is Kestrel's default port)
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
