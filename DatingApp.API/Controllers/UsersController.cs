@@ -33,7 +33,7 @@ namespace DatingApp.API.Controllers
         }
 
         //we are specifying the route template. When user enters: api/users/2 (api/controllerName/id), this action will be hit.
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);
