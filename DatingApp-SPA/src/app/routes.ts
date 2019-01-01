@@ -10,6 +10,7 @@ import { MemberListResolver } from './_resolvers/member-list-resolver';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsafe-changes.guard';
+import { ListsResolver } from './_resolvers/lists.resolver';
 
 export const appRoutes: Routes = [
     // '' literally nothing, these two are different - this will solve issue of copy and paste to another browser tab directly
@@ -25,7 +26,7 @@ export const appRoutes: Routes = [
             { path: 'messages', component: MessagesComponent},
             { path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges]},
-            { path: 'lists', component: ListsComponent},
+            { path: 'lists', component: ListsComponent, resolve: {users: ListsResolver}},
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'},
